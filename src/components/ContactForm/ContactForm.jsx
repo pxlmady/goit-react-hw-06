@@ -1,9 +1,11 @@
-import React from "react";
+import { useDispatch } from "react-redux";
+import { addContact } from "../redux/contactsslice";
 import css from "./ContactForm.module.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
-function ContactForm({ onAddContact }) {
+function ContactForm() {
+  const dispatch = useDispatch();
   const MAX_CHAR_NAME_VALIDATION = 50;
   const MIN_CHAR_NAME_VALIDATION = 3;
   const MIN_DIGITS_PHONE_VALIDATION = 6;
@@ -34,7 +36,7 @@ function ContactForm({ onAddContact }) {
     number: "",
   };
   const handleSubmit = (values, actions) => {
-    onAddContact(values);
+    dispatch(addContact(values));
     actions.resetForm();
   };
   return (

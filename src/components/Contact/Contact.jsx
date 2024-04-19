@@ -1,22 +1,25 @@
-import React from "react";
+import { useDispatch } from "react-redux";
 import css from "./contact.module.css";
-import { FaPhone, FaUser } from "react-icons/fa";
-
-function Contact({ contactData, handleDeleteButton }) {
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPhone, faUser } from "@fortawesome/free-solid-svg-icons";
+import { deleteContact } from "../redux/contactsslice";
+function Contact({ contactData }) {
+  const dispatch = useDispatch();
+  const handleDeleteButton = (contactId) => {
+    dispatch(deleteContact(contactId));
+  };
+  const phoneIcon = <FontAwesomeIcon icon={faPhone} />;
+  const userIcon = <FontAwesomeIcon icon={faUser} />;
   return (
     <div className={css.contactDataContainer}>
       <ul className={css.contactCard}>
         <div>
           <li className={css.contactData}>
-            <span>
-              <FaUser />
-            </span>
+            <span>{userIcon}</span>
             <p>{contactData.name}</p>
           </li>
           <li className={css.contactData}>
-            <span>
-              <FaPhone />
-            </span>
+            <span>{phoneIcon}</span>
             <p>{contactData.number}</p>
           </li>
         </div>

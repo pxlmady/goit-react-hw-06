@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeFilter } from "../../redux/filtersslice";
 
 function SearchBox() {
-  const filter = useSelector((state) => state.selectNameFilter.name);
+  const filter = useSelector((state) => state.filters.name);
   const dispatch = useDispatch();
 
   const handleChange = (evt) => {
@@ -27,4 +27,4 @@ function SearchBox() {
   );
 }
 
-export default SearchBox; // Добавлен экспорт компонента по умолчанию
+export default SearchBox;

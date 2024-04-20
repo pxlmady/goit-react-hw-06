@@ -13,15 +13,17 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-const contacstListPeristConfig = {
+
+const contactsListPersistConfig = {
   key: STORAGE_KEY,
   storage,
   whitelist: ["items"],
 };
+
 export const store = configureStore({
   reducer: {
-    selectContacts: persistReducer(contacstListPeristConfig, contactsReducer),
-    selectNameFilter: filtersReducer,
+    contacts: persistReducer(contactsListPersistConfig, contactsReducer),
+    filters: filtersReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -30,4 +32,5 @@ export const store = configureStore({
       },
     }),
 });
+
 export const persistor = persistStore(store);

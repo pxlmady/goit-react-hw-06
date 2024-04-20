@@ -3,8 +3,8 @@ import css from "./ContactList.module.css";
 import Contact from "../Contact/Contact";
 
 function ContactList() {
-  const contactsList = useSelector((state) => state.selectContacts.items);
-  const filter = useSelector((state) => state.selectNameFilter.name);
+  const contactsList = useSelector((state) => state.contacts.items);
+  const filter = useSelector((state) => state.filters.name);
 
   const filteredContactList = contactsList.filter((contact) =>
     contact.name.toLowerCase().includes(filter.toLowerCase())
